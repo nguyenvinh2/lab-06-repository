@@ -1,30 +1,67 @@
 'use strict';
 
+require('dotenv').config();
 const express = require('express');
 const app = express();
-const cors = require('cors');
-const PORT = process.env.PORT || 3000;
 
-app.use(express.static('./data'));
+const cors = require('cors');
 app.use(cors());
 
-app .get('/', getLocation);
+const PORT = process.env.PORT || 3000;
 
-app.use('*', (request, response) => response.send('Route doesn\'t exist!'));
+app.use(express.static('./'));
+app.get('/',(request,response) => {
+  response.status(200).send('Connected!');
+});
+
+app.get('/location',(request,response) => {
+  try {
+    const location = require('./data/geo.json');
+    const res = parserExplorer(location,request);
+    response.send(res);
+  } catch(err) {
+    console.log(err, 'eyu');
+    handleError(err, response);
+  }
+});
+
+app.get('/weather', (request, response) => {
+  let forecasts = sendWeather(request, response);
+  response.send(forecasts);
+});
+
+app.use('*', (request, response) => response.send('This route does not exist'));
 
 app. listen (PORT, () => {
   console.log(`Listen on port: ${PORT}`);
 });
 
-function getLocation(req, res) {
-  console.log('eyehd');
-  const location = require('./data/geo.json');
-  res.send(location);
+const parserExplorer = (location, req) => {
+  const loc = new Location(req.query.data, location.results[0].formatted_address, location.results[0].geometry.location.lat, location.results[0].geometry.location.lng);
+  return loc;
+};
+
+function sendWeather() {
+  const weather = require('./data/darksky.json');
+  let forecastArray = [];
+  weather.daily.data.forEach(element => {
+    forecastArray.push(new Forecast(element.time, element.summary));
+  });
+  return forecastArray;
 }
 
-function Location() {
-  this.search_query = "seattle";
-  this.formatted_query = "Seattle, WA, USA";
-  this.latitude = 47.606210;
-  this.longitude = -122.332071;
+function Forecast(time, forecast) {
+  this.forecast = forecast;
+  this.time = time;
+}
+
+function Location(query, name, lat, lon) {
+  this.search_query = query;
+  this.formatted_query = name;
+  this.latitude = lat;
+  this.longitude = lon;
+}
+
+function handleError(err, res) {
+  if (err) res.status(500).send('Sorry, something uuuuu went wrong');
 }
