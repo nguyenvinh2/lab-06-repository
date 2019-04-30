@@ -22,10 +22,21 @@
 
 ## 3: Weather
 
-    Estimate of time needed to complete: 10
+    Estimate of time needed to complete: 60
 
-    Start time: 0850
+    Start time: 1050
 
-    Finish time: 0900
+    Finish time: 1200
 
-    Actual time needed to complete: 10
+    Actual time needed to complete: 70
+
+
+## 3: Error
+
+    Estimate of time needed to complete: 30
+
+    Start time: 1200
+
+    Finish time: 1225
+
+    Actual time needed to complete: 25

@@ -20,7 +20,6 @@ app.get('/location',(request,response) => {
     const res = parserExplorer(location,request);
     response.send(res);
   } catch(err) {
-    console.log(err, 'eyu');
     handleError(err, response);
   }
 });
@@ -63,5 +62,5 @@ function Location(query, name, lat, lon) {
 }
 
 function handleError(err, res) {
-  if (err) res.status(500).send('Sorry, something uuuuu went wrong');
+  if (err) res.status(500).send('Sorry, something went wrong');
 }
