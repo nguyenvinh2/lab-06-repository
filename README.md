@@ -1,4 +1,34 @@
-# lab-06-repository
+# lab-06-repository 
+
+# City Explorer
+
+**Author**: Vinh Nguyen, Matt Burger
+**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+
+## Overview
+
+Backend application to handle front send service requests for locations.
+
+## Getting Started
+
+Deployed at:
+
+https://stark-lowlands-24634.herokuapp.com/
+
+/location to return location input data in including latitude and longitude
+/weather to returh weather location from data
+
+Clone this repo to modify requets handling.
+
+## Architecture
+
+Backend application using request/response cycle.
+
+## Change Log
+
+Day 1: Static request handling returning only city of Lynnwoord
+
+## Features:
 
 ## 1: Repository Setup
 
