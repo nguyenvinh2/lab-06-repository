@@ -51,7 +51,8 @@ function sendWeather() {
 
 function Forecast(time, forecast) {
   this.forecast = forecast;
-  this.time = time;
+  this.time = new Date(time * 1000).toString().slice(0, 15);
+  this.created_at = Date.now();
 }
 
 function Location(query, name, lat, lon) {
