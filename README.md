@@ -26,7 +26,7 @@ Backend application using request/response cycle.
 
 ## Change Log
 
-Day 1: Static request handling returning only city of Lynnwoord
+04/30/19 9-11AM: Static request handling returning only city of Lynnwoord
 
 ## Features:
 
@@ -70,3 +70,8 @@ Day 1: Static request handling returning only city of Lynnwoord
     Finish time: 1225
 
     Actual time needed to complete: 25
+
+
+## Credits and Collaborations
+
+
